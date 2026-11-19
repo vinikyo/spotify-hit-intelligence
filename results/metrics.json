@@ -1,0 +1,172 @@
+{
+  "eda": {
+    "raw_rows": 114000,
+    "raw_cols": 20,
+    "missing_values_raw": 3,
+    "unique_tracks_raw": 89741,
+    "n_genres": 114,
+    "clean_rows": 89740,
+    "duplicates_removed": 24260,
+    "popularity_mean": 33.21,
+    "popularity_std": 20.57,
+    "popularity_median": 33.0,
+    "popularity_zero_pct": 10.42,
+    "hit_threshold": 50,
+    "hit_count": 21210,
+    "hit_pct": 23.63,
+    "explicit_pct": 8.58,
+    "mean_duration_min": 3.82,
+    "top_positive_corr": {
+      "loudness": 0.0717,
+      "danceability": 0.0643,
+      "explicit": 0.0548,
+      "time_signature": 0.0369,
+      "energy": 0.0136
+    },
+    "top_negative_corr": {
+      "mode": -0.0164,
+      "duration_ms": -0.0232,
+      "acousticness": -0.0388,
+      "speechiness": -0.0472,
+      "instrumentalness": -0.1276
+    },
+    "top_5_genres_by_popularity": [
+      {
+        "genre": "k-pop",
+        "mean_popularity": 59.19,
+        "count": 856
+      },
+      {
+        "genre": "metal",
+        "mean_popularity": 58.13,
+        "count": 396
+      },
+      {
+        "genre": "pop-film",
+        "mean_popularity": 58.12,
+        "count": 799
+      },
+      {
+        "genre": "chill",
+        "mean_popularity": 55.71,
+        "count": 760
+      },
+      {
+        "genre": "sad",
+        "mean_popularity": 51.53,
+        "count": 768
+      }
+    ],
+    "bottom_5_genres_by_popularity": [
+      {
+        "genre": "latin",
+        "mean_popularity": 13.1,
+        "count": 306
+      },
+      {
+        "genre": "chicago-house",
+        "mean_popularity": 12.24,
+        "count": 977
+      },
+      {
+        "genre": "detroit-techno",
+        "mean_popularity": 11.17,
+        "count": 971
+      },
+      {
+        "genre": "romance",
+        "mean_popularity": 3.55,
+        "count": 904
+      },
+      {
+        "genre": "iranian",
+        "mean_popularity": 2.22,
+        "count": 988
+      }
+    ]
+  },
+  "target_1_regression_popularity": {
+    "Ridge Regression": {
+      "RMSE": 16.759,
+      "MAE": 11.972,
+      "R2": 0.3288
+    },
+    "Random Forest Regressor": {
+      "RMSE": 15.316,
+      "MAE": 10.893,
+      "R2": 0.4394
+    },
+    "HistGradientBoosting Regressor": {
+      "RMSE": 15.558,
+      "MAE": 10.871,
+      "R2": 0.4216
+    }
+  },
+  "target_2_classification_is_hit": {
+    "best_model": "HistGradientBoosting",
+    "models": {
+      "Regressão Logística": {
+        "Accuracy": 0.7297,
+        "Precision": 0.4583,
+        "Recall": 0.7897,
+        "F1_Score": 0.58,
+        "ROC_AUC": 0.8305
+      },
+      "Random Forest": {
+        "Accuracy": 0.7299,
+        "Precision": 0.4524,
+        "Recall": 0.678,
+        "F1_Score": 0.5427,
+        "ROC_AUC": 0.7931
+      },
+      "HistGradientBoosting": {
+        "Accuracy": 0.7767,
+        "Precision": 0.5182,
+        "Recall": 0.7869,
+        "F1_Score": 0.6249,
+        "ROC_AUC": 0.8649
+      }
+    },
+    "top_features_permutation_roc_auc": {
+      "track_genre": 0.3248,
+      "loudness": 0.013,
+      "duration_ms": 0.0109,
+      "valence": 0.0102,
+      "energy": 0.0095,
+      "acousticness": 0.0088,
+      "instrumentalness": 0.007,
+      "liveness": 0.0043,
+      "danceability": 0.0042,
+      "speechiness": 0.0042
+    }
+  },
+  "target_3_classification_track_genre": {
+    "genres_evaluated": [
+      "classical",
+      "hip-hop",
+      "metal",
+      "pop",
+      "jazz",
+      "electronic",
+      "acoustic",
+      "reggaeton",
+      "country",
+      "rock"
+    ],
+    "subset_rows": 7077,
+    "models": {
+      "Regressão Logística": {
+        "Accuracy": 0.4718,
+        "F1_Macro": 0.4714
+      },
+      "Random Forest": {
+        "Accuracy": 0.6603,
+        "F1_Macro": 0.6632
+      },
+      "HistGradientBoosting": {
+        "Accuracy": 0.6335,
+        "F1_Macro": 0.634
+      }
+    }
+  }
+}

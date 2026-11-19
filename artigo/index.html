@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artigo Científico — Spotify Hit &amp; Genre Intelligence</title>
+  <style>
+    :root {
+      --primary: #191414;
+      --accent: #1DB954;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      color: var(--text);
+      background: #f3f4f6;
+      margin: 0;
+      padding: 24px 16px;
+      line-height: 1.62;
+    }
+    .toolbar {
+      max-width: 900px;
+      margin: 0 auto 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .btn-secondary {
+      background: var(--primary);
+      margin-right: 8px;
+    }
+    .paper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 48px 56px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-radius: 4px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-size: 24px;
+      line-height: 1.3;
+      margin: 0 0 14px;
+      color: var(--primary);
+    }
+    .authors {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    .affiliation {
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+    .abstract-box {
+      background: #f9fafb;
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+      text-align: justify;
+    }
+    .abstract-box h2 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: none;
+    }
+    h2 {
+      font-size: 17px;
+      color: var(--primary);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+    h3 {
+      font-size: 15px;
+      color: var(--primary);
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+    p {
+      text-align: justify;
+      margin: 0 0 12px;
+      font-size: 14.5px;
+    }
+    ul, ol {
+      margin: 0 0 14px;
+      padding-left: 22px;
+      font-size: 14.5px;
+    }
+    li { margin-bottom: 6px; text-align: justify; }
+    code {
+      font-family: "Consolas", monospace;
+      background: #f3f4f6;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 13px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 20px;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 13.5px;
+    }
+    th, td {
+      border-top: 1px solid #d1d5db;
+      border-bottom: 1px solid #d1d5db;
+      padding: 8px 10px;
+      text-align: center;
+    }
+    th {
+      background: #f3f4f6;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    td:first-child, th:first-child { text-align: left; }
+    tr.highlight { background: #ecfdf5; font-weight: 700; }
+    figure {
+      margin: 22px auto;
+      text-align: center;
+      page-break-inside: avoid;
+    }
+    figure img {
+      max-width: 92%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    figcaption {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+    .refs p {
+      padding-left: 24px;
+      text-indent: -24px;
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .toolbar { display: none; }
+      .paper { box-shadow: none; padding: 20px 28px; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <div>
+      <a class="btn btn-secondary" href="../index.html">← Hub do Projeto</a>
+      <a class="btn btn-secondary" href="../pitch/index.html">Ver Pitch</a>
+    </div>
+    <button class="btn" onclick="window.print()">Imprimir / Salvar em PDF</button>
+  </div>
+
+  <article class="paper">
+    <header>
+      <h1>Predição de Popularidade e Classificação de Gêneros Musicais no Spotify por Meio de Aprendizado de Máquina</h1>
+      <div class="authors">
+        Vinícius Francisco Garcia Sobral (cg3034241) &nbsp;·&nbsp; Arthur de Morais Marques (cg3033856)
+      </div>
+      <div class="affiliation">
+        Instituto Federal de Educação, Ciência e Tecnologia de São Paulo (IFSP)<br />
+        Repositório Público: <a href="https://github.com/vinikyo/spotify-hit-intelligence" target="_blank">github.com/vinikyo/spotify-hit-intelligence</a>
+      </div>
+    </header>
+
+    <div class="abstract-box">
+      <h2>Resumo</h2>
+      <p>O crescimento exponencial das plataformas de <em>streaming</em> musical transformou radicalmente a indústria fonográfica, gerando catálogos com dezenas de milhões de faixas e ampliando a disputa pela atenção dos ouvintes. Este trabalho apresenta o sistema <strong>Spotify Hit &amp; Genre Intelligence</strong>, um pipeline reproduzível de Ciência de Dados e Aprendizado de Máquina aplicado ao <em>Spotify Tracks Dataset</em> (114.000 registros originais e 89.740 faixas únicas após deduplicação, abrangendo 114 gêneros musicais). Foram investigadas três tarefas supervisionadas complementares: (i) regressão do índice contínuo de popularidade (<code>popularity</code>), (ii) classificação binária de faixas de alto sucesso comercial (<code>is_hit</code>, definido por <code>popularity &ge; 50</code>) e (iii) classificação multiclasse de gênero musical (<code>track_genre</code>) em 10 gêneros representativos utilizando exclusivamente atributos acústicos. Os resultados experimentais demonstram que relações não lineares dominam o fenômeno: na regressão, o <em>Random Forest Regressor</em> atingiu R² = 0,4394 e RMSE = 15,316 (+11,1 p.p. sobre Ridge); na predição de <em>hits</em>, o <em>HistGradientBoosting</em> alcançou ROC-AUC = 0,8649, acurácia de 77,67% e revocação de 78,69%; e na classificação de gêneros, o <em>Random Forest</em> obteve acurácia de 66,03% (F1-Macro = 0,6632). A análise de importância por permutação evidenciou o gênero musical, volume, duração, valência e energia como principais determinantes preditivos.</p>
+      <p style="margin:0;"><strong>Palavras-chave:</strong> Aprendizado de Máquina; Spotify; Predição de Popularidade; Classificação de Gêneros Musicais; Ciência de Dados; <em>Hit Song Science</em>.</p>
+    </div>
+
+    <div class="abstract-box" style="border-left-color: #2E86AB;">
+      <h2>Abstract</h2>
+      <p>The rapid expansion of music streaming platforms has reshaped the phonographic industry, creating hypercompetitive catalogs of tens of millions of tracks. This paper introduces <strong>Spotify Hit &amp; Genre Intelligence</strong>, a reproducible Data Science and Machine Learning pipeline applied to the <em>Spotify Tracks Dataset</em> (114,000 raw records and 89,740 unique tracks across 114 genres). Three supervised tasks were evaluated: (i) continuous popularity regression (<code>popularity</code>), (ii) binary hit classification (<code>is_hit</code>, <code>popularity &ge; 50</code>), and (iii) 10-class genre classification (<code>track_genre</code>) using solely acoustic features. Non-linear tree ensembles consistently outperformed linear baselines: Random Forest achieved R² = 0.4394 and RMSE = 15.316 on regression; HistGradientBoosting reached ROC-AUC = 0.8649, 77.67% accuracy, and 78.69% recall on hit prediction; and Random Forest achieved 66.03% accuracy (Macro-F1 = 0.6632) on genre classification.</p>
+      <p style="margin:0;"><strong>Keywords:</strong> Machine Learning; Spotify; Popularity Prediction; Music Genre Classification; Data Science; Hit Song Science.</p>
+    </div>
+
+    <h2>1. Introdução</h2>
+    <p>Nas últimas duas décadas, o consumo de música migrou de mídias físicas para plataformas de <em>streaming</em> sob demanda como Spotify, Apple Music e Deezer. Com mais de 100 mil novas faixas publicadas diariamente, compreender quais atributos acústicos e estruturais se associam ao sucesso comercial tornou-se um diferencial competitivo na área conhecida como <em>Hit Song Science</em> (HSS).</p>
+    <p>Embora fatores externos (marketing, fama prévia do artista e viralização em redes sociais) influenciem o alcance de uma música, os atributos acústicos extraídos pela Spotify Web API — como dançabilidade, energia, valência, volume, andamento e duração — constituem sinais objetivos disponíveis antes mesmo do lançamento. Este trabalho projeta e avalia o sistema <strong>Spotify Hit &amp; Genre Intelligence</strong> para responder a três questões: (QP1) com qual precisão estimar a popularidade contínua; (QP2) qual o poder discriminativo na detecção de <em>hits</em>; e (QP3) quão bem atributos acústicos isolados distinguem gêneros musicais.</p>
+
+    <h2>2. Referencial Teórico</h2>
+    <p>Pachet e Roy (2008) discutiram os desafios iniciais da <em>Hit Song Science</em> ao demonstrar limitações de modelos lineares para capturar preferências coletivas. Posteriormente, Interiano et al. (2018) analisaram décadas de paradas britânicas e identificaram padrões consistentes em atributos acústicos de sucessos comerciais, como menor instrumentalidade e maior compressão de volume (<em>loudness</em>). Em paralelo, Tzanetakis e Cook (2002) consolidaram a classificação automática de gêneros musicais a partir de descritores de áudio. Estudos recentes evidenciam que modelos <em>ensemble</em> baseados em árvores — <em>Random Forest</em> (Breiman, 2001) e <em>Gradient Boosting</em> por histogramas (Ke et al., 2017) — capturam com eficácia interações não lineares entre gênero e assinatura acústica.</p>
+
+    <h2>3. Materiais e Métodos</h2>
+    <h3>3.1 Conjunto de Dados e Pré-processamento</h3>
+    <p>Utilizou-se o <strong>Spotify Tracks Dataset</strong> de Maharshi Pandya (<a href="https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset" target="_blank">Kaggle</a>), contendo 114.000 registros brutos, 20 variáveis úteis e 114 gêneros musicais. Na etapa de limpeza, foram removidos 3 valores nulos em metadados textuais e deduplicadas 24.260 entradas repetidas por <code>track_id</code> (mantendo o registro de maior popularidade) para impedir vazamento de dados entre treino e teste. A base final consolidou <strong>89.740 faixas únicas</strong>.</p>
+
+    <h3>3.2 Definição dos Objetivos (Targets) e Protocolo Experimental</h3>
+    <p>O pipeline foi implementado em Python com <code>scikit-learn</code> (<code>random_state = 42</code>, divisão 80% treino / 20% teste estratificada para classificação):</p>
+    <ul>
+      <li><strong>Target 1 — Regressão (<code>popularity</code>):</strong> Estimativa contínua (0–100) usando 14 atributos acústicos + <code>track_genre</code>. Modelos: Ridge, Random Forest e HistGradientBoosting.</li>
+      <li><strong>Target 2 — Classificação Binária (<code>is_hit</code>):</strong> Identificação de faixas com <code>popularity &ge; 50</code> (21.210 faixas; 23,63% da base), com <code>class_weight="balanced"</code>. Modelos: Regressão Logística, Random Forest e HistGradientBoosting.</li>
+      <li><strong>Target 3 — Classificação Multiclasse (<code>track_genre</code>):</strong> Reconhecimento de 10 gêneros representativos (<code>classical</code>, <code>hip-hop</code>, <code>metal</code>, <code>pop</code>, <code>jazz</code>, <code>electronic</code>, <code>acoustic</code>, <code>reggaeton</code>, <code>country</code>, <code>rock</code>; 7.077 faixas) usando <strong>exclusivamente</strong> os 14 atributos acústicos.</li>
+    </ul>
+
+    <h2>4. Resultados e Discussão</h2>
+    <h3>4.1 Análise Exploratória</h3>
+    <p>As 89.740 faixas únicas apresentam popularidade média de <strong>33,21</strong> (DP = 20,57; mediana = 33,0), duração média de 3,82 min, 8,58% de conteúdo explícito e 10,42% de faixas com popularidade zero (efeito de cauda longa). As correlações lineares isoladas com popularidade são modestas (<code>loudness</code> r = +0,0717; <code>danceability</code> r = +0,0643; <code>instrumentalness</code> r = &minus;0,1276), enquanto a variação por gênero é expressiva (<code>k-pop</code>: 59,19; <code>metal</code>: 58,13; <code>pop-film</code>: 58,12 vs. <code>iranian</code>: 2,22).</p>
+
+    <figure>
+      <img src="../results/figures/01_distribuicao_popularidade.png" alt="Distribuição da Popularidade" />
+      <figcaption>Figura 1: Distribuição do índice de popularidade das 89.740 faixas únicas e limiar de Hit (&ge; 50).</figcaption>
+    </figure>
+
+    <figure>
+      <img src="../results/figures/02_correlacao_atributos_audio.png" alt="Matriz de Correlação" />
+      <figcaption>Figura 2: Matriz de correlação de Pearson entre os atributos acústicos e popularidade.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="../results/figures/03_top_generos_popularidade.png" alt="Top 15 Gêneros" />
+      <figcaption>Figura 3: Top 15 gêneros musicais por popularidade média na base limpa.</figcaption>
+    </figure>
+
+    <h3>4.2 Target 1 — Regressão de Popularidade</h3>
+    <table>
+      <thead>
+        <tr><th>Modelo</th><th>RMSE</th><th>MAE</th><th>R²</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ridge Regression</td><td>16,759</td><td>11,972</td><td>0,3288</td></tr>
+        <tr><td>HistGradientBoosting Regressor</td><td>15,558</td><td><strong>10,871</strong></td><td>0,4216</td></tr>
+        <tr class="highlight"><td>Random Forest Regressor</td><td>15,316</td><td>10,893</td><td>0,4394</td></tr>
+      </tbody>
+    </table>
+    <p>O <em>Random Forest Regressor</em> superou a Regressão Ridge em 11,06 pontos percentuais de R², confirmando o caráter fortemente não linear da popularidade musical.</p>
+
+    <h3>4.3 Target 2 — Classificação Binária de Hits (<code>is_hit</code>)</h3>
+    <table>
+      <thead>
+        <tr><th>Modelo</th><th>Acurácia</th><th>Precisão</th><th>Revocação</th><th>F1-Score</th><th>ROC-AUC</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Regressão Logística</td><td>72,97%</td><td>0,4583</td><td><strong>0,7897</strong></td><td>0,5800</td><td>0,8305</td></tr>
+        <tr><td>Random Forest</td><td>72,99%</td><td>0,4524</td><td>0,6780</td><td>0,5427</td><td>0,7931</td></tr>
+        <tr class="highlight"><td>HistGradientBoosting</td><td>77,67%</td><td>0,5182</td><td>0,7869</td><td>0,6249</td><td>0,8649</td></tr>
+      </tbody>
+    </table>
+
+    <figure>
+      <img src="../results/figures/04_comparacao_modelos_classificacao.png" alt="Comparação de Modelos" />
+      <figcaption>Figura 4: Comparação de desempenho (Acurácia, F1-Score e ROC-AUC) na predição de Hits.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="../results/figures/05_feature_importance_hit.png" alt="Importância de Variáveis" />
+      <figcaption>Figura 5: Top 10 variáveis mais importantes por permutação (ROC-AUC) no HistGradientBoosting.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="../results/figures/06_matriz_confusao_hit.png" alt="Matriz de Confusão" />
+      <figcaption>Figura 6: Matriz de confusão do modelo HistGradientBoosting no conjunto de teste (n = 17.948).</figcaption>
+    </figure>
+
+    <h3>4.4 Target 3 — Classificação Multiclasse de Gêneros (10 classes)</h3>
+    <table>
+      <thead>
+        <tr><th>Modelo</th><th>Acurácia</th><th>F1-Macro</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Regressão Logística</td><td>47,18%</td><td>0,4714</td></tr>
+        <tr><td>HistGradientBoosting</td><td>63,35%</td><td>0,6340</td></tr>
+        <tr class="highlight"><td>Random Forest</td><td>66,03%</td><td>0,6632</td></tr>
+      </tbody>
+    </table>
+    <p>Apenas com atributos acústicos numéricos, o <em>Random Forest</em> alcançou 66,03% de acurácia (mais de 6,6 vezes acima do acaso de 10%), demonstrando a viabilidade de catalogação automática de gêneros musicais.</p>
+
+    <h2>5. Limitações e Trabalhos Futuros</h2>
+    <p>A parcela de variância não explicada na regressão (~56%) reflete fatores exógenos ausentes na base, como base de seguidores do artista, investimentos de marketing e tendências virais em redes sociais. Como trabalhos futuros, recomenda-se integrar metadados temporais de artistas via Spotify API, incorporar espectrogramas de áudio com Redes Neurais Convolucionais e publicar uma interface interativa de simulação para produtores.</p>
+
+    <h2>6. Conclusão</h2>
+    <p>O sistema <strong>Spotify Hit &amp; Genre Intelligence</strong> demonstrou que algoritmos <em>ensemble</em> não lineares extraem alto poder preditivo dos atributos musicais do Spotify, alcançando ROC-AUC de 0,8649 na identificação de <em>hits</em>, R² de 0,4394 na regressão de popularidade e 66,03% de acurácia na classificação de 10 gêneros musicais. Todo o código, métricas e visualizações são públicos e reproduzíveis no repositório GitHub do projeto.</p>
+
+    <h2>Referências</h2>
+    <div class="refs">
+      <p>BREIMAN, L. Random Forests. <em>Machine Learning</em>, v. 45, n. 1, p. 5–32, 2001.</p>
+      <p>INTERIANO, M. et al. Musical trends and predictability of success in contemporary songs in and out of the top charts. <em>Royal Society Open Science</em>, v. 5, n. 5, p. 171274, 2018.</p>
+      <p>KE, G. et al. LightGBM: A Highly Efficient Gradient Boosting Decision Tree. In: <em>NeurIPS</em>, v. 30, 2017.</p>
+      <p>PACHET, F.; ROY, P. Hit Song Science Is Not Yet a Science. In: <em>Proc. ISMIR</em>, p. 355–360, 2008.</p>
+      <p>PANDYA, M. <em>Spotify Tracks Dataset</em>. Kaggle, 2022. Disponível em: https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset.</p>
+      <p>PEDREGOSA, F. et al. Scikit-learn: Machine Learning in Python. <em>JMLR</em>, v. 12, p. 2825–2830, 2011.</p>
+      <p>TZANETAKIS, G.; COOK, P. Musical genre classification of audio signals. <em>IEEE Trans. Speech Audio Process.</em>, v. 10, n. 5, p. 293–302, 2002.</p>
+    </div>
+  </article>
+</body>
+</html>
